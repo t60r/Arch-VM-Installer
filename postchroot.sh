@@ -42,29 +42,42 @@ networking() {
 }
 
 rootpass() {
-		printf " \033[1m ${red}###########################${white} \n \033[0m"
-		printf " \033[1m ${red}# Enter the Root password #${white} \n \033[0m"
-		printf " \033[1m ${red}###########################${white} \n \033[0m"
-		sleep 5
-		passwd
+	printf " \033[1m ${red}###########################${white} \n \033[0m"
+	printf " \033[1m ${red}# Enter the Root password #${white} \n \033[0m"
+	printf " \033[1m ${red}###########################${white} \n \033[0m"
+	sleep 5
+	passwd
 }
 
 packages() {
 	pacman -S syslinux vim xterm xorg-xinit xorg-server xorg-server-utils --noconfirm
-	
 }
 
 syslinux() {
-	
+	printf " \033[1m ${red}######################################${white} \n \033[0m"
+	printf " \033[1m ${red}# Edit APPEND root=/dev/sda3 ro sda1 #${white} \n \033[0m"
+	printf " \033[1m ${red}######################################${white} \n \033[0m"
 	vim /boot/syslinux/syslinux.cfg
 }
 
+umountreboot() {
+	printf " \033[1m ${red}###########################${white} \n \033[0m"
+	printf " \033[1m ${red}# Base install complete   #${white} \n \033[0m"
+	printf " \033[1m ${red}#${green} Enter the commands:     #\n \033[0m"
+	printf " \033[1m ${red}#${white} exit                    #\n \033[0m"
+	printf " \033[1m ${red}#${white} umrount -R /mnt         #\n \033[0m"
+	printf " \033[1m ${red}#${white} reboot                  #\n \033[0m"
+	printf " \033[1m ${red}###########################${white} \n \033[0m"
+}
 main() {
 	environ			# sets the locale again as the environment has change
 	timezone		# very very default, also sets the hwclock
 	hostname		# grabs a hostname, thanks i3-Arch!
 	networking		# enables dhcpcd.service for much VM
 	rootpass
+	packages
+	syslinux
+	umountreboot
 }
 
 main
