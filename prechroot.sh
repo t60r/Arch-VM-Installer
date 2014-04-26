@@ -20,7 +20,7 @@ setfont Lat2-Terminus16
 locale() {
 	echo en_US.UTF-8 UTF-8 > /etc/locale.gen
 	locale-gen
-	export LANG=en_US.UTF-8 UTF-8
+	export LANG=en_US.UTF-8
 }
 
 pingnet() {
