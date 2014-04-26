@@ -77,15 +77,16 @@ nextsteps() {
 }
 
 main() {
+	update			# updates system in case of stale ISO
 	locale			# sets locale unnecessarily for fun
 	pingnet			# pings the interwebs
 	partition		# tells you what to do and opens up fdisk
-	formatdrives	# formats fdisk
+	formatdrives		# formats fdisk
 	mountparts		# mounts your partitions
-	confirmMount	# shows you exactly what you just mounted
+	confirmMount		# shows you exactly what you just mounted
 	mirrors			# echos a few US mirrors into the mirrorlist
 	installbase		# installs base and base-devel package groups
-	fstabulation	# generates fstab and shows the user the file
+	fstabulation		# generates fstab and shows the user the file
 	nextsteps		# informs the user what to do next
 }
 
