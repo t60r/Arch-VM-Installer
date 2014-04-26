@@ -15,7 +15,9 @@ green=$(tput setaf 2)
 yellow=$(tput setaf 3)
 setfont Lat2-Terminus16	
 
-
+update() {
+	pacmam -Syyu	
+}
 
 locale() {
 	echo en_US.UTF-8 UTF-8 > /etc/locale.gen
