@@ -13,13 +13,9 @@ red=$(tput setaf 1)
 white=$(tput setaf 7)
 green=$(tput setaf 2)
 yellow=$(tput setaf 3)
+setfont Lat2-Terminus16	
 
-setfont() {
-	printf " \033[1m ${yellow}Setting Font to Lat2-Terminus16${white}\033[0m"
-	setfont Lat2-Terminus16	
-	printf " \033[1m ${yellow}Dat Unicode Coverage!${white}\033[0m"
-	sleep 2
-}
+
 
 locale() {
 	echo en_US.UTF-8 UTF-8 > /etc/locale.gen
@@ -75,7 +71,6 @@ nextsteps() {
 }
 
 main() {
-	setfont			# sets font to Lat2-Terminus16 for excellent unicode coverage
 	locale			# sets locale unnecessarily for fun
 	pingnet			# pings the interwebs
 	partition		# tells you what to do and opens up fdisk
