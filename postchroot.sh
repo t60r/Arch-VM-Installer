@@ -27,8 +27,6 @@ timezone() {
 	hwclock --systohc --utc
 }
 
-#vbox(){}
-
 hostname() {
 	printf "Pick a hostname:\n"
 	read i
@@ -45,15 +43,16 @@ rootpass() {
 	printf " \033[1m ${red}###########################${white} \n \033[0m"
 	printf " \033[1m ${red}# Enter the Root password #${white} \n \033[0m"
 	printf " \033[1m ${red}###########################${white} \n \033[0m"
-	sleep 5
+	sleep 1
 	passwd
 }
 
 packages() {
-	pacman -S syslinux vim xterm xorg-xinit xorg-server xorg-server-utils --noconfirm
+	pacman -S syslinux vim xterm xorg-xinit xorg-server xorg-server-utils i3 zsh --noconfirm
 }
 
 syslinux() {
+	syslinux-install_update -i -a -m
 	printf " \033[1m ${red}######################################${white} \n \033[0m"
 	printf " \033[1m ${red}# Edit APPEND root=/dev/sda3 ro sda1 #${white} \n \033[0m"
 	printf " \033[1m ${red}######################################${white} \n \033[0m"
@@ -61,16 +60,16 @@ syslinux() {
 }
 
 umountreboot() {
-	printf " \033[1m ${red}###########################${white} \n \033[0m"
+	printf " \033[1m ${red}  ###########################${white} \n \033[0m"
 	printf " \033[1m ${red}# Base install complete   #${white} \n \033[0m"
-	printf " \033[1m ${red}#${green} Enter the commands:     #\n \033[0m"
-	printf " \033[1m ${red}#${white} exit                    #\n \033[0m"
-	printf " \033[1m ${red}#${white} umrount -R /mnt         #\n \033[0m"
-	printf " \033[1m ${red}#${white} reboot                  #\n \033[0m"
+	printf " \033[1m ${red}#${green} Enter the commands:     ${red}#${white}\n \033[0m"
+	printf " \033[1m ${red}#${white} exit                    ${red}#${white}\n \033[0m"
+	printf " \033[1m ${red}#${white} umrount -R /mnt         ${red}#${white}\n \033[0m"
+	printf " \033[1m ${red}#${white} reboot                  ${red}#${white}\n \033[0m"
 	printf " \033[1m ${red}###########################${white} \n \033[0m"
 }
 main() {
-	environ			# sets the locale again as the environment has change
+	environ			# sets the locale again as the environment has changed
 	timezone		# very very default, also sets the hwclock
 	hostname		# grabs a hostname, thanks i3-Arch!
 	networking		# enables dhcpcd.service for much VM
