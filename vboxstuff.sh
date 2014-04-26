@@ -10,7 +10,7 @@
 
 vboxthings() {
 	pacman -S virtualbox-guest-utils virtualbox-guest-dkms --noconfirm
-	modprobe vboxdrv vboxsf vboxvideo
+	modprobe vboxguest vboxsf vboxvideo
 	systemctl enable dkms.service
 }
 
