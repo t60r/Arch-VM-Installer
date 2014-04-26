@@ -73,7 +73,9 @@ fstabulation(){
 }
 
 nextsteps() {
-	printf " \033[1m ${red} HEY!${green}Type 'arch chroot /mnt /bin/bash to complete installation${white}\n \033[0m "
+	wget https://raw.githubusercontent.com/t60r/Arch-VM-Installer/master/postchroot.sh
+	mv postroot.sh /mnt
+	arch-chroot /mnt /bin/bash postchroot.sh
 }
 
 main() {
