@@ -25,34 +25,38 @@ locale() {
 
 pingnet() {
 	ping -c 3 8.8.8.8
+	sleep1
 }
 
 partition() {
+	clear
 	fdisk /dev/sda
 }
 
 formatdrives() {
+	clear
 	mkfs.ext4 /dev/sda1
 	mkfs.ext4 /dev/sda2
 } 
 
-mountparts() { 
+mountparts() {
+	clear
 	mount /dev/sda1 /mnt
 	mkdir /mnt/home
 	mount /dev/sda2 /mnt/home
 }
 
 confirmMount() {
-	printf " \033[1m ${red} HEY!${green}/dev/sda${white} confirm everything is mounted correctly!\n \033[0m "
+	clear
+	printf " \033[1m ${red} HEY!${green} You!!!${white} confirm everything is mounted correctly!\n \033[0m "
 	lsblk -f
 	sleep 5
 }
 
 mirrors(){
-	echo "Server = http://lug.mtu.edu/archlinux/$repo/os/$arch" > /etc/pacman.d/mirrorlist
-	echo "Server = http://mirror.rit.edu/archlinux/$repo/os/$arch" >> /etc/pacman.d/mirrorlist
-	echo "Server = http://mirror.us.leaseweb.net/archlinux/$repo/os/$arch" >> /etc/pacman.d/mirrorlist
-	echo "Server = http://mirror.rit.edu/archlinux/$repo/os/$arch" >> /etc/pacman.d/mirrorlist
+	clear
+	printf " \033[1m ${green} Pick your mirrors! ${white}\n \033[0m "
+	nano /etc/pacman.d/mirrorlist
 }
 
 installbase() {
@@ -60,7 +64,7 @@ installbase() {
 }
 
 fstabulation(){
-	genfstab -U -p /mnt >> /mnt/etc/fstab
+	genfstab -L -p /mnt >> /mnt/etc/fstab
 	printf " \033[1m ${red} HEY!${green} LOOK!\n${white} Make sure this looks correct!\n \033[0m "
 	cat /mnt/etc/fstab
 	sleep 7
