@@ -9,13 +9,13 @@
 #####################################
 
 vboxthings() {
-	pacman -S virtualbox-guest-utils virtualbox-guest-dkms --noconfirm
+	pacman -S virtualbox-guest-utils virtualbox-guest-dkms virtualbox-guest-modules --noconfirm
 	modprobe vboxguest vboxsf vboxvideo
 	systemctl enable dkms.service
 }
 
 main () {
- vboxthings
+	vboxthings
 }
 
 main
