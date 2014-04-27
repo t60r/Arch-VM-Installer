@@ -74,7 +74,7 @@ fstabulation(){
 
 nextsteps() {
 	wget https://raw.githubusercontent.com/t60r/Arch-VM-Installer/master/postchroot.sh
-	mv postroot.sh /mnt
+	mv postroot.sh /mnt/root
 	arch-chroot /mnt /bin/bash postchroot.sh
 }
 
