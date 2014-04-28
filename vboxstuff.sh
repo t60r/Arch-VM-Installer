@@ -1,6 +1,6 @@
 #!/bin/sh
 # Date: 4/26/14
-# Author: merkinmaker
+# Author: t60r
 # Purpose: Vbox Modules for Much VM
 #
 # Depends: Arch Linux Live ISO, prechroot.sh, postchroot.sh
