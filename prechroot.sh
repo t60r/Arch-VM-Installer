@@ -16,7 +16,7 @@ yellow=$(tput setaf 3)
 setfont Lat2-Terminus16	
 
 update() {
-	pacmam -Syyu	
+	pacman -Syyu	
 }
 
 locale() {
@@ -27,7 +27,7 @@ locale() {
 
 pingnet() {
 	ping -c 3 8.8.8.8
-	sleep1
+	sleep 1
 }
 
 partition() {
