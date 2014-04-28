@@ -8,6 +8,7 @@ The goal of this project is to offer a more relaxed environment when installing 
 2.  `wget http://7.ly/prechroot`
 3.  `source prechroot` and keep an eye out for the occasional need for input
 4.  Follow the instructions, and look at the prompts.
+4.5 Keep your fingers crossed...as this is still in development.  
 5.  See the MIT License
 
 #MIT License
