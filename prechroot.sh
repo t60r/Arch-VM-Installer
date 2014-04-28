@@ -16,7 +16,7 @@ yellow=$(tput setaf 3)
 setfont Lat2-Terminus16	
 
 update() {
-	pacman -Syyu	
+	pacman -Syyu --noconfirm
 }
 
 locale() {
