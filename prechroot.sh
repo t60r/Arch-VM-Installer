@@ -92,4 +92,4 @@ main() {
 	nextsteps		# informs the user what to do next
 }
 
-main
+main ${*}
