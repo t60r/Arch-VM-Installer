@@ -79,4 +79,4 @@ main() {
 	umountreboot
 }
 
-main
+main ${*}
