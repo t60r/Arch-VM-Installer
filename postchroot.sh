@@ -32,7 +32,7 @@ hostname() {
 	read i
 	echo "$i" > /etc/hostname
 	printf " \033[1m \n ${yellow} Enter your hostname after '127.0.0.1...localhost' in /etc/hosts ${white}\033[0m "
-	printf "\033[1m ${green} Press Enter to Continue\033[0m"
+	printf "\033[1m ${green} Press Enter to Continue \n\033[0m"
 	read Enter
 	nano /etc/hosts
 }
@@ -47,7 +47,7 @@ rootpass() {
 	printf " \033[1m ${red}###########################${white} \n \033[0m"
 	printf " \033[1m ${red}# Enter the Root password #${white} \n \033[0m"
 	printf " \033[1m ${red}###########################${white} \n \033[0m"
-	printf "\033[1m ${green} Press Enter to Continue\033[0m"
+	printf "\033[1m ${green} Press Enter to Continue \n\033[0m"
 	read Enter
 	sleep 1
 	passwd
@@ -60,7 +60,7 @@ packages() {
 syslinux() {
 	syslinux-install_update -i -a -m
 	printf " \033[1m ${red} Edit APPEND root=/dev/sda3 to point to your / partition. ${white} \n \033[0m"
-	printf "\033[1m ${green} Press Enter to Continue\033[0m"
+	printf "\033[1m ${green} Press Enter to Continue \n\033[0m"
 	read Enter
 	vim /boot/syslinux/syslinux.cfg
 }
