@@ -40,6 +40,7 @@ hostname() {
 networking() {
 	printf " \033[1m ${red} Enabling dhcpcd.service ${white} \n \033[0m"
 	systemctl enable dhcpcd.service
+	printf " \033[1m ${green} Done ${white} \n \033[0m"
 }
 
 rootpass() {
