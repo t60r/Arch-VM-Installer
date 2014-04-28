@@ -1,6 +1,6 @@
 #!/bin/sh
 # Date: 4/26/14
-# Author: merkinmaker
+# Author: t60r
 # Purpose: Post Chroot Steps for Arch VM Installation
 # 
 # Depends: Arch Linux Live ISO
