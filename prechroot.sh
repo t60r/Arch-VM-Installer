@@ -32,6 +32,11 @@ pingnet() {
 
 partition() {
 	clear
+	printf "\033[1m ${red} Make Two Partitions \n\033[0m"
+	printf "\033[1m ${yellow} /dev/sda1 = / \n\033[0m"
+	printf "\033[1m ${yellow} /dev/sda2 = /home \n\033[0m"
+	printf "\033[1m ${green} Press Enter to Continue \n\033[0m"
+	read Enter
 	fdisk /dev/sda
 }
 
@@ -52,12 +57,18 @@ confirmMount() {
 	clear
 	printf " \033[1m ${red} HEY!${green} You!!!${white} confirm everything is mounted correctly!\n \033[0m "
 	lsblk -f
-	sleep 5
+	printf "\033[1m ${green} Press Enter to Continue \n\033[0m"
+	read Enter
 }
 
 mirrors(){
 	clear
 	printf " \033[1m ${green} Pick your mirrors! ${white}\n \033[0m "
+	printf " \033[1m ${red} Bring your favorites to the top! ;) ${white}\n \033[0m "
+	printf " \033[1m ${yellow} Hint: alt+6 = copy ${white}\n \033[0m "
+	printf " \033[1m ${yellow} and ctrl+U = paste. ${white}\n \033[0m "
+	printf "\033[1m ${green} Press Enter to Continue \n\033[0m"
+	read Enter
 	nano /etc/pacman.d/mirrorlist
 }
 
@@ -74,7 +85,7 @@ fstabulation(){
 
 nextsteps() {
 	wget https://raw.githubusercontent.com/t60r/Arch-VM-Installer/master/postchroot.sh
-	mv postroot.sh /mnt/root
+	cp postroot.sh /mnt
 	arch-chroot /mnt /bin/bash postchroot.sh
 }
 
