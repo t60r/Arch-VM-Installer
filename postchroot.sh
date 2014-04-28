@@ -53,9 +53,9 @@ packages() {
 
 syslinux() {
 	syslinux-install_update -i -a -m
-	printf " \033[1m ${red}######################################${white} \n \033[0m"
-	printf " \033[1m ${red}# Edit APPEND root=/dev/sda3 ro sda1 #${white} \n \033[0m"
-	printf " \033[1m ${red}######################################${white} \n \033[0m"
+	printf " \033[1m ${red} Edit APPEND root=/dev/sda3 to point to your / partition. ${white} \n \033[0m"
+	printf "\033[1m ${green} Press Enter to Continue\033[0m"
+	read Enter
 	vim /boot/syslinux/syslinux.cfg
 }
 
