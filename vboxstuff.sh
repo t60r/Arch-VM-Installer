@@ -19,6 +19,6 @@ main () {
 	vboxthings
 }
 
-main
+main ${*}
 
 #END
