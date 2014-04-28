@@ -62,7 +62,7 @@ mirrors(){
 }
 
 installbase() {
-	pacstrap -i /mnt base base-devel
+	pacstrap -i /mnt base base-devel --noconfirm
 }
 
 fstabulation(){
