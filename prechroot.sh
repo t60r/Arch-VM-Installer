@@ -1,6 +1,6 @@
 #!/bin/sh
 #	Date: 4/26/14
-#	Author: merkinmaker
+#	Author: t60r
 #	Purpose: Basic steps for setting up an 
 #		Arch linux VM on VirtualBox
 #	Depends: Arch Linux Live ISO
