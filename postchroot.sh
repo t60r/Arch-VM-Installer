@@ -54,7 +54,7 @@ rootpass() {
 }
 
 packages() {
-	pacman -S syslinux vim xterm xorg-xinit xorg-server xorg-server-utils i3 zsh wget --noconfirm
+	pacman -S syslinux vim xterm xorg-xinit xorg-server xorg-server-utils zsh wget --noconfirm
 }
 
 syslinux() {
