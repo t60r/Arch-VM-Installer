@@ -70,7 +70,7 @@ umountreboot() {
 	printf " \033[1m ${red}# Base install complete   #${white} \n \033[0m"
 	printf " \033[1m ${red}#${green} Enter the commands:     ${red}#${white}\n \033[0m"
 	printf " \033[1m ${red}#${white} exit                    ${red}#${white}\n \033[0m"
-	printf " \033[1m ${red}#${white} umrount -R /mnt         ${red}#${white}\n \033[0m"
+	printf " \033[1m ${red}#${white} umount -R /mnt         ${red}#${white}\n \033[0m"
 	printf " \033[1m ${red}#${white} reboot                  ${red}#${white}\n \033[0m"
 	printf " \033[1m ${red}###########################${white} \n \033[0m"
 }
