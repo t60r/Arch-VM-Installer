@@ -5,12 +5,13 @@ The goal of this project is to offer a more relaxed environment when installing 
 #INSTALLATION
 
 1.  Boot a live iso of Arch Linux
-2.  `wget https://raw.githubusercontent.com/t60r/Arch-VM-Installer/master/prechroot.sh`
-3.  `source prechroot.sh` and keep an eye out for the occasional need for input
+2.  `wget http://7.ly/prechroot`
+3.  `source prechroot` and keep an eye out for the occasional need for input
 4.  Follow the instructions, and look at the prompts.
 5.  See the MIT License
 
 #MIT License
+
     Copyright (C) 2014 t60r
 
 
