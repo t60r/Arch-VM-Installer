@@ -86,6 +86,12 @@ fstabulation(){
 nextsteps() {
 	wget https://raw.githubusercontent.com/t60r/Arch-VM-Installer/master/postchroot.sh
 	cp postroot.sh /mnt
+	printf " \033[1m ${green}You will now be placed${white}\n \033[0m "
+	printf " \033[1m ${red}into a chroot environment${white}\n \033[0m "
+	printf " \033[1m ${yellow}You will be prompted for${white}\n \033[0m "
+	printf " \033[1m ${yellow}a few things along the way${white}\n \033[0m "
+	printf " \033[1m ${green} Press Enter to Continue \n\033[0m"
+	read Enter
 	arch-chroot /mnt /bin/bash postchroot.sh
 }
 
