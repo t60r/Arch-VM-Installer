@@ -13,21 +13,27 @@ red=$(tput setaf 1)
 white=$(tput setaf 7)
 green=$(tput setaf 2)
 yellow=$(tput setaf 3)
-setfont Lat2-Terminus16 
 
-environ() {
+DOVISUDO="no" # for checkifvisudo()
+
+setfont Lat2-Terminus16 #utf coverage
+
+environ() #fisrt steps: Environment, locale, /etc
+{
 	echo en_US.UTF-8 UTF-8 > /etc/locale.gen
 	locale-gen
 	export LANG=en_US.UTF-8
 	echo FONT=Lat2-Terminus16 > /etc/vconsole.conf
 }
 
-timezone() {
+timezone() #locked in at the moment
+{
 	ln -s /usr/share/zoneinfo/America/Chicago /etc/localtime
 	hwclock --systohc --utc
 }
 
-hostname() {
+thehostname() #adds a hostname of your choice, add it at the end of the first 127.0.0.1 line
+{
 	printf "Pick a hostname:\n"
 	read i
 	echo "$i" > /etc/hostname
@@ -37,13 +43,21 @@ hostname() {
 	nano /etc/hosts
 }
 
-networking() {
+###############
+# VM Specific #
+###############
+
+networking() 
+{
 	printf " \033[1m ${red} Enabling dhcpcd.service ${white} \n \033[0m"
 	systemctl enable dhcpcd.service
 	printf " \033[1m ${green} Done ${white} \n \033[0m"
 }
 
-rootpass() {
+#EOVMS
+
+rootpass() #sets the root pass
+{
 	printf " \033[1m ${red}###########################${white} \n \033[0m"
 	printf " \033[1m ${red}# Enter the Root password #${white} \n \033[0m"
 	printf " \033[1m ${red}###########################${white} \n \033[0m"
@@ -53,11 +67,13 @@ rootpass() {
 	passwd
 }
 
-packages() {
+packages() #grabs a few essentials, needs work.
+{
 	pacman -S syslinux vim xterm xorg-xinit xorg-server xorg-server-utils zsh wget --noconfirm
 }
 
-syslinux() {
+syslinux() # %s/3/1/g...pretty much
+{
 	syslinux-install_update -i -a -m
 	printf " \033[1m ${red} Edit APPEND root=/dev/sda3 to point to your / partition. ${white} \n \033[0m"
 	printf "\033[1m ${green} Press Enter to Continue \n\033[0m"
@@ -65,24 +81,86 @@ syslinux() {
 	vim /boot/syslinux/syslinux.cfg
 }
 
-umountreboot() {
-	printf " \033[1m ${red}  ###########################${white} \n \033[0m"
-	printf " \033[1m ${red}# Base install complete   #${white} \n \033[0m"
+addauser () # option to add a user
+{
+	printf "\033[1m ${yellow}Would you like to add a user? yes/no\n\033[0m"
+	read yesno
+	
+ 	# all to lower case
+	yesno=$(echo $yesno | awk '{print tolower($0)}')
+	
+ 	# check and act on given answer
+ 	case $yesno in
+  		"yes")  addtheuser ;;
+		"no")  exit 0 ;;
+   		*)      echo "Please answer yes or no" ; addauser ;;
+ 	esac
+
+}
+
+addtheuser () 
+{
+		printf "\033[1m ${green}Enter the username: \n \033[0m"
+		read $THEUSERNAME
+		useradd -m -g users -G wheel -s /bin/bash $THEUSERNAME
+		printf " \033[1m ${red}###########################${white} \n \033[0m"
+		printf " \033[1m ${red}# Enter the Root password #${white} \n \033[0m"
+		printf " \033[1m ${red}###########################${white} \n \033[0m"
+		printf "\033[1m ${green} Press Enter to Continue \n\033[0m"
+		read Enter
+		sleep 1
+		passwd $THEUSERNAME
+		exit 0
+}
+
+checkifvisudo()
+{
+	case $DOVISUDO in
+	  	"yes")  sudoers ;;
+		"no")  exit 0 ;;
+   		*)      echo "All your base, are beong to us." ; sudoers ;;
+	esac
+}
+
+sudoers () #visudo is the only recommended way to add a user to the sudoers group.  Sudo?  You do it.
+{
+	printf "\033[1m ${red}Do you want to add this user to the sudoers? yes/no\n\033[0m"
+	read yesno
+	yesno=$(echo $yesno | awk '{print tolower($0)}')
+ 	case $yesno in
+  		"yes")  suyoudoit ;;
+		"no")  exit 0 ;;
+   		*)      echo "Please answer yes or no." ; sudoers ;;
+ 	esac	
+}
+
+suyoudoit () 
+{
+	visudo	#yep
+}
+umountreboot() #we're pretty much done here. Just read and type...
+{
+	printf " \033[1m ${red}###########################${white}\n \033[0m"
+	printf " \033[1m ${red}# Base install complete   #${white}\n \033[0m"
 	printf " \033[1m ${red}#${green} Enter the commands:     ${red}#${white}\n \033[0m"
 	printf " \033[1m ${red}#${white} exit                    ${red}#${white}\n \033[0m"
-	printf " \033[1m ${red}#${white} umount -R /mnt         ${red}#${white}\n \033[0m"
+	printf " \033[1m ${red}#${white} umount -R /mnt          ${red}#${white}\n \033[0m"
 	printf " \033[1m ${red}#${white} reboot                  ${red}#${white}\n \033[0m"
-	printf " \033[1m ${red}###########################${white} \n \033[0m"
+	printf " \033[1m ${red}###########################${white}\n \033[0m"
 }
-main() {
+
+main() 
+{
 	environ			# sets the locale again as the environment has changed
 	timezone		# very very default, also sets the hwclock
-	hostname		# grabs a hostname, thanks i3-Arch!
+	thehostname		# grabs a hostname, thanks i3-Arch!
 	networking		# enables dhcpcd.service for much VM
-	rootpass
-	packages
-	syslinux
-	umountreboot
+	rootpass		# sets root pass
+	packages		# basic packages
+	syslinux		# a bootloader
+	addauser		# add a user?
+	chekifvisudo		# add this user to sudoers?
+	umountreboot		# instructions to umount, and r'boot.
 }
 
 main ${*}
