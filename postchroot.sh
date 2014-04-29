@@ -80,7 +80,7 @@ addauser () # option to add a user
  	# check and act on given answer
  	case $yesno in
   		"yes")  addtheuser ;;
-		"no")  exit 0 ;;
+		"no")  umountreboot ;;
    		*)      echo "Please answer yes or no" ; addauser ;;
  	esac
 
@@ -98,7 +98,6 @@ addtheuser ()
 		read Enter
 		sleep 1
 		passwd $THEUSERNAME
-		exit 0
 }
 
 checkifvisudo()
@@ -117,7 +116,7 @@ sudoers () #visudo is the only recommended way to add a user to the sudoers grou
 	yesno=$(echo $yesno | awk '{print tolower($0)}')
  	case $yesno in
   		"yes")  suyoudoit ;;
-		"no")  exit 0 ;;
+		"no")  umountreboot ;;
    		*)      echo "Please answer yes or no." ; sudoers ;;
  	esac	
 }
