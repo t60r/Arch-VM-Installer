@@ -146,7 +146,7 @@ main()
 	packages		# basic packages
 	syslinux		# a bootloader
 	addauser		# add a user?
-	chekifvisudo		# add this user to sudoers?
+	checkifvisudo		# add this user to sudoers?
 	umountreboot		# instructions to umount, and r'boot.
 }
 
