@@ -43,18 +43,6 @@ thehostname() #adds a hostname of your choice, add it at the end of the first 12
 	nano /etc/hosts
 }
 
-###############
-# VM Specific #
-###############
-
-networking() 
-{
-	printf " \033[1m ${red} Enabling dhcpcd.service ${white} \n \033[0m"
-	systemctl enable dhcpcd.service
-	printf " \033[1m ${green} Done ${white} \n \033[0m"
-}
-
-#EOVMS
 
 rootpass() #sets the root pass
 {
@@ -117,7 +105,7 @@ checkifvisudo()
 {
 	case $DOVISUDO in
 	  	"yes")  sudoers ;;
-		"no")  exit 0 ;;
+		"no")  	printf "\033[1m ${green} You did not add a user. :3 \n\033[0m"r ;;
    		*)      echo "All your base, are beong to us." ; sudoers ;;
 	esac
 }
