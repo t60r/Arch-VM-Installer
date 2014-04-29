@@ -1,0 +1,5 @@
+add time zone options
+add DE/WM menu
+add program menu
+add .Xresources .zshrc and .vimrc somewheres
+add pacaur
