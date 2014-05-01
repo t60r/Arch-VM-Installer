@@ -24,6 +24,7 @@ environ() #fisrt steps: Environment, locale, /etc
 	locale-gen
 	export LANG=en_US.UTF-8
 	echo FONT=Lat2-Terminus16 > /etc/vconsole.conf
+	echo LANG=en_US.UTF-8 > /etc/locale.conf
 }
 
 timezone() #locked in at the moment
