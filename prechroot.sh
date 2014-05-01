@@ -1,8 +1,8 @@
 #!/bin/sh
 #	Date: 4/26/14
 #	Author: t60r
-#	Purpose: Basic steps for setting up an 
-#		Arch linux VM on VirtualBox
+#	Purpose: Basic steps for installing
+#	an Arch Linux VM on VirtualBox
 #	Depends: Arch Linux Live ISO
 #####################################	
 #	**This entire project is a WIP  #
@@ -93,7 +93,7 @@ nextsteps() {
 	printf " \033[1m ${yellow}a few things along the way${white}\n\033[0m "
 	printf " \033[1m ${green}Press Enter to Continue\n\033[0m"
 	read Enter
-	arch-chroot /mnt /bin/bash postchroot.sh
+	chroot /mnt /bin/bash postchroot.sh
 }
 
 main() {
