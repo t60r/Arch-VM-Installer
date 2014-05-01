@@ -4,8 +4,8 @@
 #	Purpose: Basic steps for setting up an 
 #		Arch linux VM on VirtualBox
 #	Depends: Arch Linux Live ISO
-#	
-#	**This entire project is a WIP
+#####################################	
+#	**This entire project is a WIP  #
 #####################################
 
 
