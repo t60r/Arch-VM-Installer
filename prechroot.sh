@@ -4,9 +4,6 @@
 #	Purpose: Basic steps for installing
 #	an Arch Linux VM on VirtualBox
 #	Depends: Arch Linux Live ISO
-#####################################	
-#	**This entire project is a WIP  #
-#####################################
 
 
 red=$(tput setaf 1)
