@@ -1,8 +1,8 @@
-#Goal
+# Goal
 
 The goal of this project is to offer a more relaxed environment when installing an Arch Linux VM.  This set of scripts will cut down on user input while following general good practices of installation.  Coming soon...VM Extensions!?
 
-#INSTALLATION
+# INSTALLATION
 
 1.  Boot a live iso of Arch Linux
 2.  `wget http://7.ly/prechroot`
@@ -11,7 +11,7 @@ The goal of this project is to offer a more relaxed environment when installing 
 5.  Keep your fingers crossed...as this is still in development.  
 6.  Check out the additional scripts for quick customizations!
 
-#MIT License
+# MIT License
 
     Copyright (C) 2014 t60r
 
